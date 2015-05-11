@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/211/trunk/sradvance
+END
+create_cost_line_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/2/trunk/sradvance/create_cost_line_wizard.xml
+END
+invoice.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/82/trunk/sradvance/invoice.py
+END
+mrp.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/188/trunk/sradvance/mrp.py
+END
+invoice_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/100/trunk/sradvance/invoice_view.xml
+END
+sale_view_new.xml
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/trunk/sradvance/sale_view_new.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/82/trunk/sradvance/__init__.py
+END
+mrp_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/99/trunk/sradvance/mrp_view.xml
+END
+mrp_workflow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/trunk/sradvance/mrp_workflow.xml
+END
+PyQRNative.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/trunk/sradvance/PyQRNative.py
+END
+thick.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/2/trunk/sradvance/thick.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/99/trunk/sradvance/__openerp__.py
+END
+thick_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/2/trunk/sradvance/thick_view.xml
+END
+purchase_requisition.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/trunk/sradvance/purchase_requisition.py
+END
+purchase_requisition_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/2/trunk/sradvance/purchase_requisition_view.xml
+END
+sequence.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/2/trunk/sradvance/sequence.py
+END
+purchase.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/2/trunk/sradvance/purchase.py
+END
+purchase_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/trunk/sradvance/purchase_view.xml
+END
+product.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/211/trunk/sradvance/product.py
+END
+wizard_find_schedule_finish_date.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2/trunk/sradvance/wizard_find_schedule_finish_date.xml
+END
+purchase_seq.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/sradvance/purchase_seq.py
+END
+product_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/trunk/sradvance/product_view.xml
+END
+stock.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/99/trunk/sradvance/stock.py
+END
+sale.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/156/trunk/sradvance/sale.py
+END
+stock_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/99/trunk/sradvance/stock_view.xml
+END
+purchase_requisition_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/trunk/sradvance/purchase_requisition_wizard.py
+END
+sale_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/99/trunk/sradvance/sale_view.xml
+END

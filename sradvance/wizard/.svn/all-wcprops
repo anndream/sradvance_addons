@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/2/trunk/sradvance/wizard
+END
+report_workorder.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/sradvance/wizard/report_workorder.py
+END
+report_workorder_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2/trunk/sradvance/wizard/report_workorder_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2/trunk/sradvance/wizard/__init__.py
+END
+jasperclient.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/sradvance/wizard/jasperclient.py
+END
+wizard_force_production.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/trunk/sradvance/wizard/wizard_force_production.py
+END
+create_cost_line_run.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/trunk/sradvance/wizard/create_cost_line_run.py
+END
+wizard_force_production_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/2/trunk/sradvance/wizard/wizard_force_production_view.xml
+END
+finding_schedule_finish_date.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2/trunk/sradvance/wizard/finding_schedule_finish_date.py
+END

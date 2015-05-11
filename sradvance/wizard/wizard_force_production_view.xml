@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+
+        <!--  Change Product Quantity -->
+        
+        <record id="view_allconfirm_mrp_production_form" model="ir.ui.view">
+            <field name="name">allconfirm.mrp.production.form</field>
+            <field name="model">allconfirm.mrp.production</field>
+            <field name="arch" type="xml">
+                <form string="Confirm All" version="7.0">
+                    <group>
+                    </group>
+                    <footer>
+                        <button name="confirm_all" string="All Confirm"
+                            colspan="1" type="object" class="oe_highlight"  />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />    
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Confirm All Production"
+             res_model="allconfirm.mrp.production"
+             src_model="mrp.production"
+             view_mode="form"
+             target="new"
+             multi="True"
+             key2="client_action_multi"
+             id="action_allconfirm_mrp_production" />
+	
+	</data>
+
+</openerp>

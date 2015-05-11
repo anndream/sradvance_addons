@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_sradvanced_pickingout_form" model="ir.ui.view">
+            <field name="name">sradvanced.picking.out.form</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+            	 <field name="partner_id" position="after">
+            	 	<field name="partner_invoice_id" />
+            	 </field>
+            	 <field name="date" position="after" >
+            	 	<field name="ineco_delivery_date" string="Next Date" />
+            	 </field>
+            	 <field name="stock_journal_id" position="after">
+            	 	<field name="problem_note" />
+            	 </field>
+			</field>
+		</record>
+
+
+        <record id="view_sradvance_move_picking_tree" model="ir.ui.view">
+            <field name="name">stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+                    <field name="product_id"  position="after">
+	                    <field name="name" readonly="1" />
+	                    <field name="product_width" readonly="1" />
+	                    <field name="product_length" readonly="1" />
+                    </field>
+            </field>
+        </record>
+
+        <record id="view_sradvance_move_picking_form2" model="ir.ui.view">
+            <field name="name">sradvance.stock.move.form2</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+            	<field name="product_id" position="after">
+	           		<field name="product_width" readonly="1" />
+	               	<field name="product_length" readonly="1" />
+            	</field>
+            </field>
+        </record>
+
+        <record id="stock_sradvance_partial_picking_form" model="ir.ui.view">
+            <field name="name">sradvance.partial.picking.form</field>
+            <field name="model">stock.partial.picking</field>
+            <field name="inherit_id" ref="stock.stock_partial_picking_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/form/field[@name='move_ids']/tree/field[@name='product_id']" position="after"> 
+            		<field name="delivery_description" />
+            		<field name="product_width" />
+            		<field name="product_length" />
+            	</xpath>
+            </field>
+        </record>
+		
+	</data>
+</openerp>

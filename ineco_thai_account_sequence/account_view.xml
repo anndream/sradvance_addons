@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+		<!-- Customer Payment -->
+        <record model="ir.ui.view" id="view_ineco_account_sequence_form">
+	      	<field name="name">ineco.voucher.sequence.form</field>
+	      	<field name="model">account.voucher</field>
+	      	<field name="inherit_id" ref="account_voucher.view_vendor_receipt_form"/>
+	      	<field name="arch" type="xml">
+				<button name="proforma_voucher" position="after">
+					<button name="button_billing_no" type="object" string="Get Billing Number" attrs="{'invisible':[('reference','!=',False)]}" />
+					<button name="button_receipt_no" type="object" string="Get Receipt Number" attrs="{'invisible':[('bill_number','!=',False)]}"/>
+				</button>
+				<field name="reference" position="replace">
+					<field name="reference" string="Billing Number" readonly="1" />
+				</field>
+			</field>
+		</record>    
+		
+        <record model="ir.ui.view" id="view_ineco_account_payment2_form">
+	      	<field name="name">ineco.account.payment2.form</field>
+	      	<field name="model">account.voucher</field>
+	      	<field name="inherit_id" ref="ineco_thai_account.view_ineco_account_payment_form"/>
+	      	<field name="arch" type="xml">
+	      		<field name="bill_number" position="replace">
+	      			<field name="bill_number" string="Receipt Number" readonly="1" />
+	      		</field>
+	      		
+			</field>
+		</record>
+    
+    </data>
+</openerp>

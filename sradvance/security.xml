@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="0">
+	
+	    <record model="ir.module.category" id="module_category_sradvance">
+	        <field name="name">SR Advanced</field>
+	        <field name="parent_id" ref="base.module_category_sales_management"/>
+	        <field name="sequence">10</field>
+	    </record>
+	
+	    <record id="group_sale_approve_overlimit" model="res.groups">
+	        <field name="name">Approve Over Limit</field>
+	        <field name="category_id" ref="module_category_sradvance"/>
+	    </record>
+	    
+	</data>
+</openerp>

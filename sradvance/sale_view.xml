@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<!-- 07-05-2012 Change inherit from sale.view_order_form all -->
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="view_sradvance_sale_order_form">
+			<field name="name">sradvance.sale.order.form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<button name="cancel" position="before">
+                    <button name="action_manager_confirm" 
+                    	states="draft,sent" 
+                    	string="Manager Confirm" 
+                    	class="oe_highlight" 
+                    	type="object" 
+                    	groups="sradvance.group_sale_approve_overlimit"/>
+				</button>
+				<field name="user_id" position="after">
+					<field name="user_support_id" />
+					<field name="sticker_note" />
+					<field name="force_production" />
+				</field>
+				<xpath
+					expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='product_id']"
+					position='after'>
+					<field name="sr_width" />
+					<field name="sr_length" />
+					<field name="round_method" on_change="rounding_change(round_method)" />
+					<field name="price_unit2" invisible="1"/>
+				</xpath>
+				<xpath
+					expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/field[@name='name']"
+					position='after'>
+					<group>
+						<field name="line_note" />
+						<group>
+							<button name="button_create_costline" string="Load Detail"
+									type="object" icon="gtk-zoom-in" />	
+							<button name="button_dummy" icon="gtk-execute" string="Update Price" type="object"/>			
+						</group>	
+						<field colspan="4" name="additional_line" nolabel="1"
+							context="{'sale_product_id':product_id,'myWidth':sr_width, 'myLength': sr_length}" />
+					</group>
+				</xpath>				
+				
+				<xpath
+					expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']" position='replace'>
+					<tree string="Sales Order Lines">
+						<field name="sequence" /> 
+						<field name="state" invisible="1" />
+						<field name="th_weight" invisible="1" />
+						<field name="product_id"
+							context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'shop':parent.shop_id, 'uom':product_uom}"
+							groups="base.group_user"
+							on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)" />
+						<field name="name" />
+						<field name="sr_width" />
+						<field name="sr_length" />
+						<field name="ft2" />
+						<field name="product_uom_qty"
+							context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'shop':parent.shop_id, 'uom':product_uom}"
+							on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, False, parent.fiscal_position, True, context)" />
+						<field name="product_uom"
+							on_change="product_uom_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, product_uos_qty, product_uos, name, parent.partner_id, False, False, parent.date_order, context)"
+							groups="product.group_uom" options="{&quot;no_open&quot;: True}" />
+						<field name="product_uos_qty" groups="product.group_uos"
+							invisible="1" />
+						<field name="product_uos" string="UoS" groups="product.group_uos"
+							invisible="1" />
+						<field name="tax_id" widget="many2many_tags"
+							domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]" />
+						<field name="price_unit" />
+						<field name="price_unit2" invisible="1" />
+						<field name="discount" groups="sale.group_discount_per_so_line" />
+						<field name="price_subtotal" />
+					</tree>
+				</xpath>
+				<xpath expr="//notebook/page[@string='Order Lines']/field[@name='order_line']" position="before">
+					<button name="button_create_costline" string="Load All Detail" type="object" icon="gtk-zoom-in" />
+					<button name="button_update_price" icon="gtk-execute" string="Update Price" type="object" />
+					
+				</xpath>
+				<xpath expr="//notebook/page[@string='Order Lines']" position="after">
+					<page string="Capacity Plan">
+						<group>
+							<button name="button_create_schedule_finish" string="Load Plan" type="object" icon="gtk-zoom-in" readonly="1" />
+							<field name="plan_ids" colspan="4" nolabel="1">
+								<tree string="Workload">
+									<field name="order_id" invisible="1" />
+									<field name="workcenter_id" readonly="1" />
+									<field name="capacity" readonly="1" />
+									<field name="capacity_planned" readonly="1" />
+									<field name="capacity_loaded" readonly="1" />
+									<field name="date_start" readonly="1" />
+									<field name="date_finish" readonly="1" />
+								</tree>
+							</field>
+						</group>
+					</page>
+					<page string="Log">
+						<group>
+							<group>
+								<separator string="Purchase Order" colspan="2"/>
+								<field name="datetime_receivedoc" />
+								<field name="sender_name" />
+								<field name="has_attachment" />
+								<field name="is_f" />
+								<field name="is_af" />
+								<field name="is_e" />
+								<field name="is_logistic" />								
+							</group>
+							<group>
+								<separator string="Inform Other Information" colspan="2"/>
+								<field name="inform_date" />
+								<field name="inform_customer_name" />
+								<field name="inform_date_complete" />
+								<field name="inform_user_name" />
+							</group>
+							<group>
+								<separator string="Fax Out" colspan="2"/>
+								<field name="faxout_date" />
+								<field name="faxout_user_name" />
+								<field name="faxout_customer_name" />
+							</group>
+							<group>
+								<separator string="Drawing and Price" colspan="2"/>
+								<field name="commitment_date" />
+								<field name="commitment_customer_name" />
+							</group>
+							<group>
+								<separator string="Change Delivery Date" colspan="2"/>
+								<field name="deliver_confirm_date" />
+								<field name="deliver_customer_name" />
+								<field name="deliver_user_name" />
+							</group>
+							<group>
+								<separator string="Cash Payment" colspan="2"/>
+								<field name="is_cash" />
+								<field name="slip_date" />
+							</group>
+							<group>
+								<separator string="Actual Delivery" colspan="2"/>
+								<field name="logistic_date" />
+								<field name="logistic_qty" />
+								<field name="is_logistic_complete" />
+								<field name="other_note" />
+							</group>
+							<group>
+								<separator string="Other" colspan="2"/>
+								<field name="other_note2" />
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_sradvance_sale_order_line_additional_form">
+			<field name="name">sale.order.line.addtionalcost.form</field>
+			<field name="model">sale.order.line.addtionalcost</field>
+			<field name="arch" type="xml">
+				<form string="Detail" version="7.0">
+					<group>
+						<group>
+							<field name="product_id"
+								on_change="onchange_myproduct_id(context, product_id, w1,w2,l1,l2)" />
+							<field name="name" />
+							<field name="w1" select="1"
+								on_change="onchange_myproduct_id(context, product_id, w1,w2,l1,l2)" />
+							<field name="w2" select="1"
+								on_change="onchange_myproduct_id(context, product_id, w1,w2,l1,l2)" />
+							<field name="l1" select="1"
+								on_change="onchange_myproduct_id(context, product_id, w1,w2,l1,l2)" />
+							<field name="l2" select="1"
+								on_change="onchange_myproduct_id(context, product_id, w1,w2,l1,l2)" />
+							<button name="button_dummy" icon="gtk-execute" string="Update Price" type="object" />
+						</group>
+						<group>
+							<field name="product_qty" string="Qty" />
+							<field name="product_uom" string="UoM" />
+							<field name="price_unit" readonly="1" />
+							<field name="price_unit_sale" />
+							<field name="price_subtotal" />
+							<field name="order_line_id" invisible="1" />
+						</group>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_sradvance_sale_order_line_additional_tree">
+			<field name="name">sale.order.line.addtionalcost.tree</field>
+			<field name="model">sale.order.line.addtionalcost</field>
+			<field name="arch" type="xml">
+				<tree string="Detail">
+					<field name="product_id" />
+					<field name="w1" />
+					<field name="w2" />
+					<field name="l1" />
+					<field name="l2" />
+					<field name="product_qty" string="Qty" />
+					<field name="product_uom" string="UoM" />
+					<field name="price_unit" />
+					<field name="price_unit_sale" />
+					<field name="price_subtotal" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="ineco_view_order_tree" model="ir.ui.view">
+			<field name="name">ineco.sale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_tree" />
+			<field name="priority">2</field>
+			<field name="arch" type="xml">
+				<field name="user_id" position="after">
+					<field name="user_support_id" />
+				</field>
+			</field>
+		</record>
+
+		<record id="ineco_view_sales_order_filter" model="ir.ui.view">
+			<field name="name">ineco.sale.order.list.select</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_sales_order_filter" />
+			<field name="arch" type="xml">
+				<field name="user_id" position="after">
+					<field name="user_support_id" />
+					<field name="requested_date" />
+					<field name="date_finished" />
+				</field>
+			</field>
+		</record>
+		
+		<record id="sale.action_quotations" model="ir.actions.act_window"> 
+			<field name="context">{"search_default_user_support_id":uid}</field> 
+		</record>
+		<record id="sale.action_orders" model="ir.actions.act_window"> 
+			<field name="context">{"search_default_user_support_id":uid}</field> 
+		</record>
+
+		<record model="ir.ui.view" id="view_sradvance2_sale_order_form_support">
+			<field name="name">sradvance2.sale.order.form.support</field>
+			<field name="type">form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_order_dates.view_sale_orderfor" />
+			<field name="arch" type="xml">
+				<field name="requested_date" position="replace">
+					<field name="requested_date"  />
+					<field name="date_finished"  />
+				</field>
+			</field>
+		</record>
+
+	</data>
+</openerp>
